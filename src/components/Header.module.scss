@@ -1,0 +1,28 @@
+$header-height: 8.5vw;
+$left-marg: 5vw;
+
+.header {
+  width: 100%;
+  background: linear-gradient(rgb(0, 37, 60), #1e3d58);
+  height: $header-height;
+  justify-content: space-between;
+  padding: 10px 0px;
+  display: flex;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  .headerName {
+    font-size: 6.5vw;
+    color: white;
+    margin-left: $left-marg;
+  }
+  .headerLogo {
+    height: 8.5vw;
+    width: auto;
+    margin-right: $left-marg;
+  }
+}
+.headerPlug {
+  height: $header-height;
+}
