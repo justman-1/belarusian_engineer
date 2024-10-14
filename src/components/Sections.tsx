@@ -1,4 +1,5 @@
 import st from "./Sections.module.scss"
+//gh пасхалка
 
 export default function Sections() {
   return (
