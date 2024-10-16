@@ -4,7 +4,7 @@ import st from "./Sections.module.scss"
 interface PropsType {
   name: string
   path: string
-  allDiv: HTMLDivElement | null
+  makeOpacity0: () => void
   isFull?: true
 }
 
@@ -17,17 +17,36 @@ export default function CardLink(props: PropsType) {
         onClick={(e) => {
           e.preventDefault()
           console.log(props)
-          if (props.allDiv) props.allDiv.style.opacity = "0"
-          window.scroll({
-            top: -5000,
-            behavior: "smooth",
-          })
+          props.makeOpacity0()
           setTimeout(() => {
-            window.location.href = props.path
-          }, 500)
+            const scrollTop: number =
+              document.documentElement.scrollTop || document.body.scrollTop
+            const headerTop: number = window.innerWidth * 0.15
+            if (scrollTop > headerTop) {
+              window.scroll({
+                top: window.innerWidth * 0.15,
+              })
+            }
+            window.scroll({
+              top: 0,
+              behavior: "smooth",
+            })
+            setTimeout(() => {
+              window.location.href = props.path
+            }, 200)
+          }, 300)
         }}
       >
-        <div className={st.block}>{props.name}</div>
+        <div
+          className={st.block}
+          style={{
+            background: `conic-gradient(from 37deg, ${
+              props.isFull ? "#2f68e3" : "#43b0f1"
+            } 25%, white)`,
+          }}
+        >
+          {props.name}
+        </div>
       </Link>
     </>
   )

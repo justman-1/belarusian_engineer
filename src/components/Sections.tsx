@@ -6,58 +6,67 @@ import CardLink from "./CardLink"
 
 export default function Sections() {
   const allRef = useRef<HTMLDivElement>(null)
+  function changeAllOpacity() {
+    if (allRef.current) allRef.current.style.opacity = "0"
+  }
   return (
-    <div ref={allRef} style={{ transition: "all 0.5s ease" }}>
+    <div ref={allRef} style={{ transition: "all 0.3s ease" }}>
       <h1 className={st.sectionTitle}>Праграмаванне і інтэрнет</h1>
       <section className={st.blocks}>
         <CardLink
           name="Ўвесь раздзел"
-          path="/words/prog-internet"
-          allDiv={allRef.current}
+          path="/words/prog-full"
+          makeOpacity0={changeAllOpacity}
           isFull
         />
         <CardLink
           name="Вэб-праграммаванне"
           path="/words/prog-internet"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
         <CardLink
           name="Праграммаванне мабільных дадаткаў"
           path="/words/prog-mobile"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
         <CardLink
           name="Праграммаванне мікракантролераў і ўбудавальных сістэм"
           path="/words/prog-micro"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
         <CardLink
           name="Алгарытмы і структуры даных"
           path="/words/algo"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
         <CardLink
           name="Інтэрнэт рэчаў"
           path="/words/internet"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
       </section>
       <h1 className={st.sectionTitle}>Электроніка</h1>
       <section className={st.blocks}>
         <CardLink
+          name="Ўвесь раздзел"
+          path="/words/electronics-full"
+          makeOpacity0={changeAllOpacity}
+          isFull
+        />
+        <CardLink
           name="Асновы аналагавай і лічбавай электронікі"
           path="/words/electro-fundamentals"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
         <CardLink
           name="Сістэмы кіравання і аўтаматызацыя"
           path="/words/control-systems"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
         <CardLink
           name="Электрамантаж і схемы"
           path="/words/schemes"
-          allDiv={allRef.current}
+          makeOpacity0={changeAllOpacity}
         />
       </section>
     </div>
