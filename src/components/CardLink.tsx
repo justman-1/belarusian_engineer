@@ -5,6 +5,7 @@ interface PropsType {
   name: string
   path: string
   allDiv: HTMLDivElement | null
+  isFull?: true
 }
 
 export default function CardLink(props: PropsType) {
@@ -25,7 +26,7 @@ export default function CardLink(props: PropsType) {
         }, 500)
       }}
     >
-      <div className={st.block}>{props.name}</div>
+      <div className={st.block} style={{backgroundColor: (isFull) ? }}>{props.name}</div>
     </Link>
   )
 }
