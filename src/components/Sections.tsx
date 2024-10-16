@@ -11,6 +11,12 @@ export default function Sections() {
       <h1 className={st.sectionTitle}>Праграмаванне і інтэрнет</h1>
       <section className={st.blocks}>
         <CardLink
+          name="Ўвесь раздзел"
+          path="/words/prog-internet"
+          allDiv={allRef.current}
+          isFull
+        />
+        <CardLink
           name="Вэб-праграммаванне"
           path="/words/prog-internet"
           allDiv={allRef.current}
@@ -26,7 +32,7 @@ export default function Sections() {
           allDiv={allRef.current}
         />
         <CardLink
-          name="Алгарытмы і структуры дадзеных"
+          name="Алгарытмы і структуры даных"
           path="/words/algo"
           allDiv={allRef.current}
         />

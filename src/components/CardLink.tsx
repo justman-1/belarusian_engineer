@@ -5,6 +5,7 @@ interface PropsType {
   name: string
   path: string
   allDiv: HTMLDivElement | null
+  isFull?: true
 }
 
 export default function CardLink(props: PropsType) {
