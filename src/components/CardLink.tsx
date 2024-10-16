@@ -26,7 +26,7 @@ export default function CardLink(props: PropsType) {
         }, 500)
       }}
     >
-      <div className={st.block} style={{backgroundColor: (isFull) ? }}>{props.name}</div>
+      <div className={st.block} style={{backgroundColor: (props.isFull) ? "blue" : "red"}}>{props.name}</div>
     </Link>
   )
 }
