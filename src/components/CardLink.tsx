@@ -4,7 +4,7 @@ import st from "./Sections.module.scss"
 interface PropsType {
   name: string
   path: string
-  makeOpacity0: () => void
+  /* makeOpacity0: (val: string) => void */
   isFull?: true
 }
 
@@ -14,10 +14,10 @@ export default function CardLink(props: PropsType) {
       <Link
         href={props.path}
         style={{ textDecoration: "none" }}
-        onClick={(e) => {
+        /* onClick={(e) => {
           e.preventDefault()
           console.log(props)
-          props.makeOpacity0()
+          props.makeOpacity0("0")
           setTimeout(() => {
             const scrollTop: number =
               document.documentElement.scrollTop || document.body.scrollTop
@@ -31,11 +31,14 @@ export default function CardLink(props: PropsType) {
               top: 0,
               behavior: "smooth",
             })
-            setTimeout(() => {
-              window.location.href = props.path
-            }, 200)
+            setTimeout(
+              () => {
+                window.location.href = props.path
+              },
+              scrollTop > headerTop ? 200 : 0
+            )
           }, 300)
-        }}
+        }} */
       >
         <div
           className={st.block}
