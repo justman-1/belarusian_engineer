@@ -5,12 +5,15 @@
   font-size: 8vw;
   margin-top: 15vw;
   color: #057dcd;
+  &:first-child {
+    margin-top: 10vw;
+  }
 }
 .blocks {
   .block {
     margin: 5vw auto auto auto;
-    width: 78vw;
-    height: 28vw;
+    width: 88vw;
+    height: 38vw;
     border-radius: 1vw;
     color: #1e3d58;
     font-size: 4.5vw;

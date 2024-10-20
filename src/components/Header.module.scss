@@ -1,4 +1,4 @@
-$header-height: 8.5vw;
+$header-height: 13.5vw;
 $left-marg: 5vw;
 
 .header {
@@ -25,4 +25,5 @@ $left-marg: 5vw;
 }
 .headerPlug {
   height: $header-height;
+  padding: 10px 0px;
 }
