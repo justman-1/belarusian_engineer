@@ -38,6 +38,11 @@ export default function Sections() {
           /* makeOpacity0={changeAllOpacity} */
         />
         <CardLink
+          name="Машыннае навучанне і штучны інтэлект"
+          path="/words/ai"
+          /* makeOpacity0={changeAllOpacity} */
+        />
+        <CardLink
           name="Інтэрнэт рэчаў"
           path="/words/internet"
           /* makeOpacity0={changeAllOpacity} */
