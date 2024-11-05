@@ -1,6 +1,5 @@
 import Header from "@/components/Header"
 import { Russo_One } from "next/font/google"
-import { Text } from "@chakra-ui/react"
 
 const font = Russo_One({
   subsets: ["latin"],
@@ -8,11 +7,11 @@ const font = Russo_One({
   display: "swap",
 })
 
-export default function preTest({
+export default function preTest(/* {
   params,
 }: {
   params: { section_name: string }
-}) {
+} */) {
   return (
     <div className={font.className}>
       <Header />

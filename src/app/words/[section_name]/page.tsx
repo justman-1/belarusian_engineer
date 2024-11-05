@@ -138,6 +138,7 @@ export default function Words_Section({
                         value={`${i}`}
                         colorScheme="blue"
                         isDisabled={isChecked}
+                        key={i}
                       >
                         <Text fontSize="2xl">
                           {firstLetterUpperCase(option)}
