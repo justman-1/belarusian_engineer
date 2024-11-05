@@ -141,7 +141,9 @@ export default function Words_Section({
                         key={i}
                       >
                         <Text fontSize="2xl">
-                          {firstLetterUpperCase(option)}
+                          <span className={st.optionsText}>
+                            {firstLetterUpperCase(option)}
+                          </span>
                         </Text>
                       </Radio>
                     ))}

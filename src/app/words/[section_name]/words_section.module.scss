@@ -38,6 +38,12 @@
   }
 }
 
+.optionsText {
+  @media (max-width: 550px) {
+    font-size: 4.3vw;
+  }
+}
+
 .arrows {
   display: flex;
   align-items: flex-start;
