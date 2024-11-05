@@ -8,7 +8,15 @@ import { Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
 import allData, { Translation } from "../../../words"
 import { useEffect, useState, useRef } from "react"
 
-const font = Russo_One({ subsets: ["latin"], weight: "400", display: "swap" })
+const font = Russo_One({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+})
+
+function firstLetterUpperCase(str: string): string {
+  return str.length ? str[0].toUpperCase() + str.slice(1) : str
+}
 
 function randomizeArray(arr: Translation[]): Translation[] {
   const notUsed: number[] = new Array(arr.length).fill(0).map((e, i) => i)
@@ -31,6 +39,9 @@ export default function Words_Section({
   const [wordsI, setWordsI] = useState<number>(0)
   const [isTranslate, setIsTranslate] = useState<boolean>(false)
   const [currWord, setCurrWord] = useState<string>(" ")
+  const [correctAnsI, setCorrectAnsI] = useState<number>(
+    Math.floor(Math.random() * 4)
+  )
   //const [currAns, setCurrAns] = useState<number>(1)
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const cardRef = useRef<HTMLDivElement>(null)
@@ -86,16 +97,19 @@ export default function Words_Section({
     window.location.href = "/"
   }, [])
   useEffect(() => {
-    if (words.length) setCurrWord(words[wordsI].word)
-    console.log("allData:")
-    console.log(allData)
-    console.log("words:")
-    console.log(words)
+    if (words.length) {
+      setCurrWord(words[wordsI].word)
+      setCorrectAnsI(Math.floor(Math.random() * 4))
+    }
+    //console.log("allData:")
+    //console.log(allData)
+    //console.log("words:")
+    //console.log(words)
   }, [words, wordsI])
   return (
     <div className={font.className}>
       <Header />
-      <main>
+      <main className="container">
         <Link href="/" style={{ textDecoration: "none" }}>
           <div className={st.back}>
             <Image
@@ -110,44 +124,26 @@ export default function Words_Section({
         </Link>
         <div>
           <div className={st.card} onClick={rotateCard} ref={cardRef}>
-            <div className={st.cardText}>
-              {currWord[0].toUpperCase() + currWord.slice(1)}
-            </div>
+            <div className={st.cardText}>{firstLetterUpperCase(currWord)}</div>
           </div>
-          <RadioGroup style={{ marginTop: "10vw" }}>
+          <RadioGroup>
             <Stack style={{ marginLeft: "10%" }}>
-              <Radio
-                size="lg"
-                value="0"
-                colorScheme="blue"
-                isDisabled={isChecked}
-              >
-                Нейкі адказ
-              </Radio>
-              <Radio
-                size="lg"
-                value="1"
-                colorScheme="blue"
-                isDisabled={isChecked}
-              >
-                Другі адказ
-              </Radio>
-              <Radio
-                size="lg"
-                value="2"
-                colorScheme="blue"
-                isDisabled={isChecked}
-              >
-                Яшчэ адказ
-              </Radio>
-              <Radio
-                size="lg"
-                value="3"
-                colorScheme="blue"
-                isDisabled={isChecked}
-              >
-                Мабыць правільны адказ
-              </Radio>
+              {!words.length
+                ? ""
+                : words[wordsI].options
+                    .toSpliced(correctAnsI, 0, words[wordsI].translation)
+                    .map((option, i) => (
+                      <Radio
+                        size="lg"
+                        value={`${i}`}
+                        colorScheme="blue"
+                        isDisabled={isChecked}
+                      >
+                        <Text fontSize="2xl">
+                          {firstLetterUpperCase(option)}
+                        </Text>
+                      </Radio>
+                    ))}
             </Stack>
           </RadioGroup>
           <div className={st.arrows}>

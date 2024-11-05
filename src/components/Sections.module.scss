@@ -1,29 +1,35 @@
-@import "Header.module";
-
 .sectionTitle {
-  margin-left: $left-marg;
-  font-size: 8vw;
-  margin-top: 15vw;
+  margin-top: 10vw;
   color: #057dcd;
-  &:first-child {
-    margin-top: 10vw;
+  @media (min-width: 500px) {
+    text-align: center;
+    margin-top: 40px;
   }
 }
-.blocks {
-  .block {
+.cards {
+  .card {
     margin: 5vw auto;
     width: 88vw;
     height: 38vw;
     border-radius: 1vw;
     color: #1e3d58;
-    font-size: 4.5vw;
     background: conic-gradient(from 37deg, #43b0f1 25%, white);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     padding: 20px;
     white-space: break-spaces;
     text-decoration: none;
+    .cardText {
+      @media (max-width: 500px) {
+        font-size: 4.5vw;
+      }
+    }
     &:hover {
       box-shadow: 0px 0px 50px #43b0f1;
+    }
+    @media (min-width: 580px) {
+      width: 500px;
+      height: 500px * 38 / 88;
+      margin: 25px auto;
     }
   }
 }

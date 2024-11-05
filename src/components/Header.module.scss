@@ -1,29 +1,45 @@
 $header-height: 13.5vw;
-$left-marg: 5vw;
 
 .header {
   width: 100%;
   background: linear-gradient(rgb(0, 37, 60), #1e3d58);
   height: $header-height;
-  justify-content: space-between;
   padding: 10px 0px;
-  display: flex;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
+  @media (min-width: 500px) {
+    height: 65px;
+  }
+  .headerInside {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    @media (min-width: 900px) {
+      width: 800px;
+    }
+  }
   .headerName {
     font-size: 6.5vw;
+    @media (min-width: 500px) {
+      font-size: 30px;
+    }
     color: white;
-    margin-left: $left-marg;
   }
   .headerLogo {
-    height: 8.5vw;
+    height: 9.5vw;
     width: auto;
-    margin-right: $left-marg;
+    @media (min-width: 500px) {
+      height: 46px;
+    }
   }
 }
 .headerPlug {
   height: $header-height;
   padding: 10px 0px;
+  @media (min-width: 500px) {
+    height: 65px;
+  }
 }

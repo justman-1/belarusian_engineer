@@ -1,10 +1,10 @@
 import Link from "next/link"
 import st from "./Sections.module.scss"
+import { Text } from "@chakra-ui/react"
 
 interface PropsType {
   name: string
   path: string
-  /* makeOpacity0: (val: string) => void */
   isFull?: true
 }
 
@@ -41,14 +41,16 @@ export default function CardLink(props: PropsType) {
         }} */
       >
         <div
-          className={st.block}
+          className={st.card}
           style={{
             background: `conic-gradient(from 37deg, ${
               props.isFull ? "#2f68e3" : "#43b0f1"
             } 25%, white)`,
           }}
         >
-          {props.name}
+          <Text className={st.cardText} fontSize={"2xl"}>
+            {props.name}
+          </Text>
         </div>
       </Link>
     </>
