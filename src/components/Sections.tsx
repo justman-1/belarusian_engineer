@@ -14,7 +14,7 @@ export default function Sections() {
           path="/words/prog-full"
           isFull
         />
-        <CardLink name="Вэб-праграммаванне" path="/words/prog-internet" />
+        <CardLink name="Вэб-праграммаванне" path="/words/prog-web" />
         <CardLink
           name="Праграммаванне мабільных дадаткаў"
           path="/words/prog-mobile"
