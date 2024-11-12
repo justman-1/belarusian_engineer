@@ -1,10 +1,10 @@
 import st from "./Sections.module.scss"
 import CardLink from "./CardLink"
-import { Text } from "@chakra-ui/react"
+import { Text, Container } from "@chakra-ui/react"
 
 export default function Sections() {
   return (
-    <div style={{ transition: "all 0.3s ease" }} className="container">
+    <div className="container">
       <Text className={st.sectionTitle} fontSize="3xl">
         Праграмаванне і інтэрнет
       </Text>
