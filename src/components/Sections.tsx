@@ -1,6 +1,6 @@
 import st from "./Sections.module.scss"
 import CardLink from "./CardLink"
-import { Text, Container } from "@chakra-ui/react"
+import { Text } from "@chakra-ui/react"
 
 export default function Sections() {
   return (
