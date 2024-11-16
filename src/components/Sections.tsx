@@ -11,24 +11,24 @@ export default function Sections() {
       <section className={st.cards}>
         <CardLink
           name="Увесь раздзел: Праграмаванне і інтэрнет"
-          path="/words/prog-full"
+          path="/pretest/prog-full"
           isFull
         />
         <CardLink name="Вэб-праграммаванне" path="/words/prog-web" />
         <CardLink
           name="Праграммаванне мабільных дадаткаў"
-          path="/words/prog-mobile"
+          path="/pretest/prog-mobile"
         />
         <CardLink
           name="Праграммаванне мікракантролераў і ўбудавальных сістэм"
-          path="/words/prog-micro"
+          path="/pretest/prog-micro"
         />
-        <CardLink name="Алгарытмы і структуры даных" path="/words/algo" />
+        <CardLink name="Алгарытмы і структуры даных" path="/pretest/algo" />
         <CardLink
           name="Машыннае навучанне і штучны інтэлект"
-          path="/words/ai"
+          path="/pretest/ai"
         />
-        <CardLink name="Інтэрнэт рэчаў" path="/words/internet" />
+        <CardLink name="Інтэрнэт рэчаў" path="/pretest/internet" />
       </section>
       <Text className={st.sectionTitle} fontSize="3xl">
         Электроніка
@@ -36,18 +36,18 @@ export default function Sections() {
       <section className={st.cards}>
         <CardLink
           name="Ўвесь раздзел: Электроніка"
-          path="/words/electronics-full"
+          path="/pretest/electronics-full"
           isFull
         />
         <CardLink
           name="Асновы аналагавай і лічбавай электронікі"
-          path="/words/electro-fundamentals"
+          path="/pretest/electro-fundamentals"
         />
         <CardLink
           name="Сістэмы кіравання і аўтаматызацыя"
-          path="/words/control-systems"
+          path="/pretest/control-systems"
         />
-        <CardLink name="Электрамантаж і схемы" path="/words/schemes" />
+        <CardLink name="Электрамантаж і схемы" path="/pretest/schemes" />
       </section>
     </div>
   )
