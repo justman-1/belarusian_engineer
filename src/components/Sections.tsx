@@ -9,12 +9,12 @@ export default function Sections() {
         Праграмаванне і інтэрнет
       </Text>
       <section className={st.cards}>
-        <CardLink
+        {/* <CardLink
           name="Увесь раздзел: Праграмаванне і інтэрнет"
           path="/pretest/prog-full"
           isFull
-        />
-        <CardLink name="Вэб-праграммаванне" path="/words/prog-web" />
+        /> */}
+        <CardLink name="Вэб-праграммаванне" path="/pretest/prog-web" />
         <CardLink
           name="Праграммаванне мабільных дадаткаў"
           path="/pretest/prog-mobile"
@@ -34,11 +34,11 @@ export default function Sections() {
         Электроніка
       </Text>
       <section className={st.cards}>
-        <CardLink
+        {/* <CardLink
           name="Ўвесь раздзел: Электроніка"
           path="/pretest/electronics-full"
           isFull
-        />
+        /> */}
         <CardLink
           name="Асновы аналагавай і лічбавай электронікі"
           path="/pretest/electro-fundamentals"

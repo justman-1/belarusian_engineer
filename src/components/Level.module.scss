@@ -1,0 +1,21 @@
+@keyframes levelAppearAnim {
+  from {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.level {
+  animation: levelAppearAnim 0.7s linear;
+  background: linear-gradient(to right, #1e3d58, #43b0f1);
+  color: white;
+  padding: 20px 30px;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 0px 0px 50px 0px;
+}

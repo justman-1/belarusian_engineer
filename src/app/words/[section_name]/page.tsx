@@ -4,7 +4,7 @@ import { Russo_One } from "next/font/google"
 import st from "./words_section.module.scss"
 import Image from "next/image"
 import Link from "next/link"
-import { Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
+import { Progress, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
 import allData, { Translation } from "../../../words"
 import { useEffect, useState, useRef } from "react"
 
@@ -110,7 +110,10 @@ export default function Words_Section({
     <div className={font.className}>
       <Header />
       <main className="container">
-        <Link href="/" style={{ textDecoration: "none" }}>
+        <Link
+          href={"/pretest/" + params.section_name}
+          style={{ textDecoration: "none" }}
+        >
           <div className={st.back}>
             <Image
               className={st.backImg}
@@ -119,9 +122,15 @@ export default function Words_Section({
               height={15}
               alt=""
             />
-            <Text fontSize="xs">Да галоўнай старонцы</Text>
+            <Text fontSize="xs">Назад</Text>
           </div>
         </Link>
+        <Progress
+          value={((wordsI + 1) * 100) / 15}
+          transition="all 0.3s ease"
+          colorScheme="green"
+          marginTop="20px"
+        />
         <div>
           <div className={st.card} onClick={rotateCard} ref={cardRef}>
             <div className={st.cardText}>{firstLetterUpperCase(currWord)}</div>

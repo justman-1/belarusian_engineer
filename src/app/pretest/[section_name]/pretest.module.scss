@@ -1,4 +1,17 @@
+@keyframes pretestTextAppearAnim {
+  from {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .pretestText {
+  animation: pretestTextAppearAnim 0.7s linear;
   margin-top: 30px;
   p {
     margin-top: 10px;
