@@ -28,7 +28,8 @@ export default function Sections() {
           name="Машыннае навучанне і штучны інтэлект"
           path="/pretest/ai"
         />
-        <CardLink name="Інтэрнэт рэчаў" path="/pretest/internet" />
+        <CardLink name="Інтэрнэт рэчаў" path="/pretest/internet-things" />
+        <CardLink name="Інтэрнэт" path="/pretest/internet" />
       </section>
       <Text className={st.sectionTitle} fontSize="3xl">
         Электроніка
