@@ -4,9 +4,10 @@ import { Russo_One } from "next/font/google"
 import st from "./words_section.module.scss"
 import Image from "next/image"
 import Link from "next/link"
-import { Progress, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
+import { Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
 import allData, { Translation } from "../../../words"
 import { useEffect, useState, useRef } from "react"
+import ProgressBar from "@/components/ProgressBar"
 
 const font = Russo_One({
   subsets: ["latin"],
@@ -125,12 +126,7 @@ export default function Words_Section({
             <Text fontSize="xs">Назад</Text>
           </div>
         </Link>
-        <Progress
-          value={((wordsI + 1) * 100) / 15}
-          transition="all 0.3s ease"
-          colorScheme="green"
-          marginTop="20px"
-        />
+        <ProgressBar progress={((wordsI + 1) * 100) / 10} />
         <div>
           <div className={st.card} onClick={rotateCard} ref={cardRef}>
             <div className={st.cardText}>{firstLetterUpperCase(currWord)}</div>
