@@ -19,13 +19,13 @@ export default function ProgressBar(props: PropsType) {
         style={{
           transition: "all 0.3s ease",
           height: "100%",
-          width: Math.max(0, Math.min(props.progress, 100)) + "%",
+          width: Math.max(0.1, Math.min(props.progress, 100)) + "%",
         }}
       ></div>
       <div
         style={{
           transition: "all 0.3s ease",
-          width: 100 - Math.max(0, Math.min(props.progress, 100)) + "%",
+          width: 100 - Math.max(0, Math.min(props.progress, 99.9)) + "%",
           backgroundColor: "#f1f1f1",
           height: "100%",
         }}

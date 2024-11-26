@@ -4,7 +4,8 @@ import { Russo_One } from "next/font/google"
 import st from "./words_section.module.scss"
 import Image from "next/image"
 import Link from "next/link"
-import { Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
+import { useSearchParams } from "next/navigation"
+import { Button, Center, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
 import allData, { Translation } from "../../../words"
 import { useEffect, useState, useRef } from "react"
 import ProgressBar from "@/components/ProgressBar"
@@ -36,6 +37,8 @@ export default function Words_Section({
 }: {
   params: { section_name: string }
 }) {
+  const searchParams = useSearchParams()
+  const level = parseInt(searchParams.get("level") || "0")
   const [words, setWords] = useState<Translation[]>([])
   const [wordsI, setWordsI] = useState<number>(0)
   const [isTranslate, setIsTranslate] = useState<boolean>(false)
@@ -68,6 +71,7 @@ export default function Words_Section({
     else setWordsI(wordsI ? wordsI - 1 : words.length - 1)
   }
   useEffect(() => {
+    console.log(level)
     const section_name: string = params.section_name
     for (const section in allData) {
       if (section_name == section) {
@@ -81,15 +85,15 @@ export default function Words_Section({
             }
           }
         }
-        setWords(randomizeArray(willWords))
+        setWords(randomizeArray(willWords.slice((level-1) * 10, level * 10)))
         return
       }
       if (allData.hasOwnProperty(section)) {
         const sectionObj = allData[section as keyof typeof allData]
         for (const part in sectionObj) {
           if (section_name == part && sectionObj.hasOwnProperty(part)) {
-            const partObj = sectionObj[part as keyof typeof sectionObj]
-            setWords(randomizeArray(partObj))
+            const partObj: Translation[] = sectionObj[part as keyof typeof sectionObj]
+            setWords(randomizeArray(partObj.slice((level-1) * 10, level * 10)))
             return
           }
         }
@@ -126,7 +130,7 @@ export default function Words_Section({
             <Text fontSize="xs">Назад</Text>
           </div>
         </Link>
-        <ProgressBar progress={((wordsI + 1) * 100) / 10} />
+        <ProgressBar progress={(wordsI * 100) / words.length} />
         <div>
           <div className={st.card} onClick={rotateCard} ref={cardRef}>
             <div className={st.cardText}>{firstLetterUpperCase(currWord)}</div>
@@ -154,7 +158,12 @@ export default function Words_Section({
                     ))}
             </Stack>
           </RadioGroup>
+          <Center marginTop="30px">
+            <Button size="lg" colorScheme='green' letterSpacing="0.15em" width="50%"
+              display={(wordsI == words.length-1) ? "inline-block" : "none"}>Скончыць</Button>
+          </Center>
           <div className={st.arrows}>
+            <div style={{display: (wordsI == 0) ? "inline-block" : "none"}}></div>
             <Image
               src="/arrow.png"
               width={100}
@@ -164,6 +173,8 @@ export default function Words_Section({
               onClick={() => {
                 toggleWord(false)
               }}
+              style={{display: (wordsI != 0) ? "inline" : "none", transform: "rotateY(180deg)",
+                left: "10%"}}
             />
             <Image
               src="/arrow.png"
@@ -174,6 +185,7 @@ export default function Words_Section({
               onClick={() => {
                 toggleWord(true)
               }}
+              style={{display: (wordsI != words.length-1) ? "inline" : "none"}}
             />
           </div>
         </div>
