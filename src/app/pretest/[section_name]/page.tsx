@@ -30,7 +30,7 @@ export default function PreTest({
           section as keyof (typeof data)["electronics-full"]
         ]
     console.log(Math.ceil(words.length / 10))
-    setLevels(Math.ceil(words.length / 10))
+    setLevels(Math.ceil(words.length / 10) - (words.length % 10 > 4 ? 0 : 1))
     console.log(Array(Math.ceil(words.length / 10)))
   }, [])
   return (
@@ -71,8 +71,6 @@ export default function PreTest({
               )
             })}
         </div>
-        {/* Лэвэл 1(першыя 10 слоў) */}
-        {/* Лэвэл 2(наступныя 10 слоў) */}
       </div>
     </div>
   )

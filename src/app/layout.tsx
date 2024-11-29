@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { ChakraProvider } from "@chakra-ui/react"
+import { Provider } from "@/components/ui/provider"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ChakraProvider>{children}</ChakraProvider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   )

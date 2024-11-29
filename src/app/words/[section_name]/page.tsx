@@ -5,7 +5,9 @@ import st from "./words_section.module.scss"
 import Image from "next/image"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { Button, Center, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react"
+import { Radio, RadioGroup } from "@/components/ui/radio"
+import { Button } from "@/components/ui/button"
+import { Center, Stack, Text } from "@chakra-ui/react"
 import allData, { Translation } from "../../../words"
 import { useEffect, useState, useRef } from "react"
 import ProgressBar from "@/components/ProgressBar"
@@ -85,15 +87,18 @@ export default function Words_Section({
             }
           }
         }
-        setWords(randomizeArray(willWords.slice((level-1) * 10, level * 10)))
+        setWords(randomizeArray(willWords.slice((level - 1) * 10, level * 10)))
         return
       }
       if (allData.hasOwnProperty(section)) {
         const sectionObj = allData[section as keyof typeof allData]
         for (const part in sectionObj) {
           if (section_name == part && sectionObj.hasOwnProperty(part)) {
-            const partObj: Translation[] = sectionObj[part as keyof typeof sectionObj]
-            setWords(randomizeArray(partObj.slice((level-1) * 10, level * 10)))
+            const partObj: Translation[] =
+              sectionObj[part as keyof typeof sectionObj]
+            setWords(
+              randomizeArray(partObj.slice((level - 1) * 10, level * 10))
+            )
             return
           }
         }
@@ -135,7 +140,7 @@ export default function Words_Section({
           <div className={st.card} onClick={rotateCard} ref={cardRef}>
             <div className={st.cardText}>{firstLetterUpperCase(currWord)}</div>
           </div>
-          <RadioGroup>
+          <RadioGroup size="lg">
             <Stack style={{ marginLeft: "10%" }}>
               {!words.length
                 ? ""
@@ -143,10 +148,9 @@ export default function Words_Section({
                     .toSpliced(correctAnsI, 0, words[wordsI].translation)
                     .map((option, i) => (
                       <Radio
-                        size="lg"
                         value={`${i}`}
                         colorScheme="blue"
-                        isDisabled={isChecked}
+                        disabled={isChecked}
                         key={i}
                       >
                         <Text fontSize="2xl">
@@ -159,11 +163,20 @@ export default function Words_Section({
             </Stack>
           </RadioGroup>
           <Center marginTop="30px">
-            <Button size="lg" colorScheme='green' letterSpacing="0.15em" width="50%"
-              display={(wordsI == words.length-1) ? "inline-block" : "none"}>Скончыць</Button>
+            <Button
+              size="lg"
+              colorPalette="green"
+              letterSpacing="0.15em"
+              width="50%"
+              display={wordsI == words.length - 1 ? "inline-block" : "none"}
+            >
+              Скончыць
+            </Button>
           </Center>
           <div className={st.arrows}>
-            <div style={{display: (wordsI == 0) ? "inline-block" : "none"}}></div>
+            <div
+              style={{ display: wordsI == 0 ? "inline-block" : "none" }}
+            ></div>
             <Image
               src="/arrow.png"
               width={100}
@@ -173,8 +186,11 @@ export default function Words_Section({
               onClick={() => {
                 toggleWord(false)
               }}
-              style={{display: (wordsI != 0) ? "inline" : "none", transform: "rotateY(180deg)",
-                left: "10%"}}
+              style={{
+                display: wordsI != 0 ? "inline" : "none",
+                transform: "rotateY(180deg)",
+                left: "10%",
+              }}
             />
             <Image
               src="/arrow.png"
@@ -185,7 +201,9 @@ export default function Words_Section({
               onClick={() => {
                 toggleWord(true)
               }}
-              style={{display: (wordsI != words.length-1) ? "inline" : "none"}}
+              style={{
+                display: wordsI != words.length - 1 ? "inline" : "none",
+              }}
             />
           </div>
         </div>
