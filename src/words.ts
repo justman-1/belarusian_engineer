@@ -4,21 +4,28 @@ export type Translation = {
   options: [string, string, string]
 }
 
+interface ProgFullType{
+  [key: string]: Translation[]
+  "prog-web": Translation[]
+  "prog-mobile": Translation[]
+  "prog-micro": Translation[]
+  algo: Translation[]
+  ai: Translation[]
+  "internet-things": Translation[]
+  internet: Translation[]
+}
+
+interface ElectronicsFullType{
+  [key: string]: Translation[]
+  "electro-fundamentals": Translation[]
+  "control-systems": Translation[]
+  schemes: Translation[]
+}
+
 type DataType = {
-  "prog-full": {
-    "prog-web": Translation[]
-    "prog-mobile": Translation[]
-    "prog-micro": Translation[]
-    algo: Translation[]
-    ai: Translation[]
-    "internet-things": Translation[]
-    internet: Translation[]
-  }
-  "electronics-full": {
-    "electro-fundamentals": Translation[]
-    "control-systems": Translation[]
-    schemes: Translation[]
-  }
+  [key: string]: ProgFullType | ElectronicsFullType
+  "prog-full": ProgFullType
+  "electronics-full": ElectronicsFullType
 }
 
 //const Budze: Translation[] = []

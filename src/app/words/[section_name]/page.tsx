@@ -75,33 +75,15 @@ export default function Words_Section({
   useEffect(() => {
     console.log(level)
     const section_name: string = params.section_name
-    for (const section in allData) {
-      if (section_name == section) {
-        let willWords: Translation[] = []
-        if (allData.hasOwnProperty(section)) {
-          const sectionObj = allData[section as keyof typeof allData]
-          for (const part in sectionObj) {
-            if (sectionObj.hasOwnProperty(part)) {
-              const partObj = sectionObj[part as keyof typeof sectionObj]
-              willWords = willWords.concat(partObj)
-            }
-          }
+    let willWords: Translation[] = []
+    for (const sectionKey in allData) {
+      for (const partKey in allData[sectionKey]) {
+        if (allData[partKey].hasOwnProperty(section_name)) {
+          const partObj = allData[sectionKey][partKey]
+          willWords = willWords.concat(partObj)
         }
         setWords(randomizeArray(willWords.slice((level - 1) * 10, level * 10)))
         return
-      }
-      if (allData.hasOwnProperty(section)) {
-        const sectionObj = allData[section as keyof typeof allData]
-        for (const part in sectionObj) {
-          if (section_name == part && sectionObj.hasOwnProperty(part)) {
-            const partObj: Translation[] =
-              sectionObj[part as keyof typeof sectionObj]
-            setWords(
-              randomizeArray(partObj.slice((level - 1) * 10, level * 10))
-            )
-            return
-          }
-        }
       }
     }
     window.location.href = "/"
