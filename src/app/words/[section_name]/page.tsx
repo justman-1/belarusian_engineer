@@ -35,20 +35,14 @@ function randomizeArray(arr: Translation[]): Translation[] {
   return newArr
 }
 
-export default function Words_Section({
-  params,
-}: {
-  params: { section_name: string }
-}) {
+export default function Words_Section({ params }: { params: { section_name: string } }) {
   const searchParams = useSearchParams()
   const level = parseInt(searchParams.get("level") || "0")
   const [words, setWords] = useState<Translation[]>([])
   const [wordsI, setWordsI] = useState<number>(0)
   const [isTranslate, setIsTranslate] = useState<boolean>(false)
   const [currWord, setCurrWord] = useState<string>(" ")
-  const [correctAnsI, setCorrectAnsI] = useState<number>(
-    Math.floor(Math.random() * 4)
-  )
+  const [correctAnsI, setCorrectAnsI] = useState<number>(Math.floor(Math.random() * 4))
   //const [currAns, setCurrAns] = useState<number>(1)
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const cardRef = useRef<HTMLDivElement>(null)
@@ -78,7 +72,7 @@ export default function Words_Section({
     console.log(level)
     const section_name: string = params.section_name
     for (const sectionKey in allData) {
-      if(allData[sectionKey].hasOwnProperty(section_name)){
+      if (allData[sectionKey].hasOwnProperty(section_name)) {
         const willWords: Translation[] = allData[sectionKey][section_name]
         setWords(randomizeArray(willWords.slice((level - 1) * 10, level * 10)))
         return
@@ -100,10 +94,7 @@ export default function Words_Section({
     <div className={font.className}>
       <Header />
       <main className="container">
-        <Link
-          href={"/pretest/" + params.section_name}
-          style={{ textDecoration: "none" }}
-        >
+        <Link href={"/pretest/" + params.section_name} style={{ textDecoration: "none" }}>
           <div className={st.back}>
             <Image
               className={st.backImg}
@@ -154,9 +145,7 @@ export default function Words_Section({
             </Button>
           </Center>
           <div className={st.arrows}>
-            <div
-              style={{ display: wordsI == 0 ? "inline-block" : "none" }}
-            ></div>
+            <div style={{ display: wordsI == 0 ? "inline-block" : "none" }}></div>
             <Image
               src="/arrow.png"
               width={100}
