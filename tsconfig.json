@@ -7,6 +7,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "ESNext",
+    "target": "es2017",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,

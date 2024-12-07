@@ -11,7 +11,6 @@ import { Center, Stack, Text } from "@chakra-ui/react"
 import allData, { Translation } from "../../../words"
 import { useEffect, useState, useRef } from "react"
 import ProgressBar from "@/components/ProgressBar"
-import { testCrypto } from "@/tests"
 
 const font = Russo_One({
   subsets: ["latin"],
@@ -68,7 +67,6 @@ export default function Words_Section({ params }: { params: { section_name: stri
     else setWordsI(wordsI ? wordsI - 1 : words.length - 1)
   }
   useEffect(() => {
-    testCrypto()
     console.log(level)
     const section_name: string = params.section_name
     for (const sectionKey in allData) {
