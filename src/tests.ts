@@ -1,13 +1,15 @@
-import sectors from "./words"
+import sectors, { Translation } from "./words"
 import randomString from "randomstring"
 import { AES, enc } from "crypto-js"
 
-export interface testWord {
+const testBaseSize = 10
+
+export interface TestWord {
   word: string
   checked: boolean
 }
 
-export type Test = testWord[]
+export type Test = TestWord[]
 
 export interface Db {
   [key: string]: Test[]
@@ -22,41 +24,84 @@ export interface Db {
   "control-systems": Test[]
   schemes: Test[]
 }
+const dbBaseObj: Db = {
+  "prog-web": [],
+  "prog-mobile": [],
+  "prog-micro": [],
+  algo: [],
+  ai: [],
+  "internet-things": [],
+  internet: [],
+  "electro-fundamentals": [],
+  "control-systems": [],
+  schemes: [],
+}
 
-class TestsClass{
+class TestsClass {
   initTests(): Db {
-    const db: Db = {
-      "prog-web": [],
-      "prog-mobile": [],
-      "prog-micro": [],
-      algo: [],
-      ai: [],
-      "internet-things": [],
-      internet: [],
-      "electro-fundamentals": [],
-      "control-systems": [],
-      schemes: [],
-    }
+    const db: Db = dbBaseObj
     let successDecrypt = false
     if (localStorage.getItem("technikDb")) {
       const db: Db | null = this.#tryDecryptDb(localStorage.getItem("technikDb") || "")
-      if (db) {
-        successDecrypt = true
-
-      }
+      successDecrypt = db ? true : false
     }
-    if(!successDecrypt){
-      for (const sectorKey in sectors) {
-        for (const themeKey in sectors[sectorKey]) {
-          
-          if(sectors[sectorKey][themeKey] )
-        }
-      }
-      //localStorage.setItem("technikDb", )
+    if (!successDecrypt) {
+      //create new db
+      const newDb = this.#createNewDb()
+      localStorage.setItem("technikDb", this.#encryptDb(newDb))
     }
-    return db
+    return this.#integrateUpdatesToDb(db)
   }
 
+  #integrateUpdatesToDb(db: Db): Db {
+    for (const sectorKey in sectors) {
+      for (const themeKey in sectors[sectorKey]) {
+        const words: Translation[] = sectors[sectorKey][themeKey]
+        if (words.length != db[themeKey].length) {
+          for (let i = 0; i < words.length; ++i) {
+            let found: boolean = false
+            for (const test of db[themeKey]) {
+              for (let j = 0; j < test.length; ++j) {
+                if (test[j].word == words[i].word) {
+                  found = true
+                  break
+                }
+              }
+              if (found) break
+            }
+            if (!found) {
+              db[themeKey][db[themeKey].length - 1].push({
+                word: words[i].word,
+                checked: false,
+              })
+            }
+          }
+        }
+      }
+    }
+    localStorage.setItem("technikDb", this.#encryptDb(db))
+    return db
+  }
+  #createNewDb(): Db {
+    const newDb: Db = dbBaseObj
+    for (const sectorKey in sectors) {
+      for (const themeKey in sectors[sectorKey]) {
+        const words: Translation[] = sectors[sectorKey][themeKey]
+        const tests: Test[] = [[]]
+        for (let i = 0; i < words.length; ++i) {
+          const testWord: TestWord = {
+            word: words[i].word,
+            checked: false,
+          }
+          if (tests[tests.length - 1].length < testBaseSize)
+            tests[tests.length - 1].push(testWord)
+          else tests.push([testWord])
+        }
+        newDb[themeKey] = tests
+      }
+    }
+    return newDb
+  }
   #encryptDb(db: Db): string {
     const startSymbols = randomString.generate({
       length: Math.floor(Math.random() * 20),

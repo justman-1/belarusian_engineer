@@ -123,7 +123,10 @@ export default function Words_Section({ params }: { params: { section_name: stri
                         key={i}
                       >
                         <Text fontSize="2xl">
-                          <span className={st.optionsText}>
+                          <span
+                            className={st.optionsText}
+                            style={{ color: isChecked ? "gray" : "black" }}
+                          >
                             {firstLetterUpperCase(option)}
                           </span>
                         </Text>
