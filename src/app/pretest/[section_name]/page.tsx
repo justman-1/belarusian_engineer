@@ -28,7 +28,7 @@ export default function PreTest({ params }: { params: { section_name: string } }
     )
     const marks = Tests.getTestLevelsMarks(params.section_name)
     setLevelsTestResult(marks)
-    console.log(marks)
+    //console.log(marks)
   }, [])
   return (
     <div className={font.className}>

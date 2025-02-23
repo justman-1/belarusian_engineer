@@ -26,7 +26,7 @@ export default function Result() {
   useEffect(() => {
     const res = Tests.tryDecryptTestResult(localStorage.getItem("lt") || "")
     if (!res) return router.replace("/")
-    console.log(res)
+    //console.log(res)
     let qCorrect: number = 0
     const result: PassingTestResult = JSON.parse(res)
     const thisTest: ResultTest = result.test

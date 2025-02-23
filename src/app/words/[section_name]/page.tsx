@@ -84,10 +84,10 @@ export default function Words_Section({ params }: { params: { section_name: stri
   }
 
   function changeAnswer(answerIndex: number) {
-    console.log(answerIndex)
+    //console.log(answerIndex)
     answers[wordsI] = answerIndex
     setAnswers([...answers])
-    console.log("was: " + answers)
+    //console.log("was: " + answers)
   }
 
   function finishTest() {
@@ -126,8 +126,8 @@ export default function Words_Section({ params }: { params: { section_name: stri
       return { checked: e.checked, word: e.word }
     })
     Tests.saveTestResult(params.section_name, level, testSave)
-    console.log("Test: ")
-    console.log(testSave)
+    //console.log("Test: ")
+    //console.log(testSave)
     const passingResult: PassingTestResult = {
       section_name: params.section_name,
       level: level,
@@ -135,7 +135,7 @@ export default function Words_Section({ params }: { params: { section_name: stri
       isLastLevel: Tests.isLastLevel(params.section_name, level),
     }
     const encResult = Tests.encryptTestResult(JSON.stringify(passingResult))
-    console.log(encResult)
+    //console.log(encResult)
     localStorage.setItem("lt", encResult)
     router.push(`/result`)
   }
@@ -144,7 +144,7 @@ export default function Words_Section({ params }: { params: { section_name: stri
     if (loaded.current) return
     loaded.current = true
     if (!level || level < 0) return router.replace("/")
-    console.log("level " + level)
+    //console.log("level " + level)
     const section_name: string = params.section_name
     for (const sectionKey in allData) {
       if (allData[sectionKey].hasOwnProperty(section_name)) {
@@ -162,22 +162,22 @@ export default function Words_Section({ params }: { params: { section_name: stri
               return Math.floor(Math.random() * 4)
             })
         )
-        console.log("1: ")
-        console.log(randomizeArray(willWords.slice((level - 1) * 10, level * 10)))
-        console.log("2: ")
-        console.log(db[params.section_name][level - 1])
-        console.log("3: ")
-        console.log(Array(db[params.section_name][level - 1].length).fill(-1))
-        console.log("4: ")
-        console.log(
+        //console.log("1: ")
+        //console.log(randomizeArray(willWords.slice((level - 1) * 10, level * 10)))
+        //console.log("2: ")
+        //console.log(db[params.section_name][level - 1])
+        //console.log("3: ")
+        //console.log(Array(db[params.section_name][level - 1].length).fill(-1))
+        //console.log("4: ")
+        /* console.log(
           Array(db[params.section_name][level - 1].length)
             .fill(0)
             .map(() => {
               return Math.floor(Math.random() * 4)
             })
-        )
-        console.log("5(db):")
-        console.log(db)
+        ) */
+        //console.log("5(db):")
+        //console.log(db)
         return
       }
     }
@@ -185,8 +185,8 @@ export default function Words_Section({ params }: { params: { section_name: stri
   }, [])
 
   useEffect(() => {
-    console.log("answers:")
-    console.log(answers)
+    //console.log("answers:")
+    //console.log(answers)
     if (words.length) {
       setCurrWord(words[wordsI].word)
     }
