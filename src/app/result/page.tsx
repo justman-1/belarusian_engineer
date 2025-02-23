@@ -5,7 +5,7 @@ import { Russo_One } from "next/font/google"
 import Header from "@/components/Header"
 import { useRouter } from "next/navigation"
 import { Text, Card, Stack, Button, Center } from "@chakra-ui/react"
-import { firstLetterUpperCase } from "../words/[section_name]/page"
+import firstLetterUpperCase from "@/utils/firstLetterUpperCase"
 import Link from "next/link"
 import Confetti from "react-confetti"
 

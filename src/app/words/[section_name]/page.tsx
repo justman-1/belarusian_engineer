@@ -16,16 +16,13 @@ import { PassingTestResult, ResultTest, Test, Tests } from "@/tests"
 import RotateCardDialog from "@/components/RotateCardDialog"
 import useDialogStore from "@/stores/useDialogOpen"
 import { useRouter } from "next/navigation"
+import firstLetterUpperCase from "@/utils/firstLetterUpperCase"
 
 const font = Russo_One({
   subsets: ["latin"],
   weight: "400",
   display: "swap",
 })
-
-export function firstLetterUpperCase(str: string): string {
-  return str.length ? str[0].toUpperCase() + str.slice(1) : str
-}
 
 function randomizeArray(arr: Translation[]): Translation[] {
   const notUsed: number[] = new Array(arr.length).fill(0).map((e, i) => i)
