@@ -9,25 +9,14 @@ export default function Sections() {
         Праграмаванне і інтэрнет
       </Text>
       <section className={st.cards}>
-        {/* <CardLink
-          name="Увесь раздзел: Праграмаванне і інтэрнет"
-          path="/pretest/prog-full"
-          isFull
-        /> */}
         <CardLink name="Вэб-праграммаванне" path="/pretest/prog-web" />
-        <CardLink
-          name="Праграммаванне мабільных дадаткаў"
-          path="/pretest/prog-mobile"
-        />
+        <CardLink name="Праграммаванне мабільных дадаткаў" path="/pretest/prog-mobile" />
         <CardLink
           name="Праграммаванне мікракантролераў і ўбудавальных сістэм"
           path="/pretest/prog-micro"
         />
         <CardLink name="Алгарытмы і структуры даных" path="/pretest/algo" />
-        <CardLink
-          name="Машыннае навучанне і штучны інтэлект"
-          path="/pretest/ai"
-        />
+        <CardLink name="Машыннае навучанне і штучны інтэлект" path="/pretest/ai" />
         <CardLink name="Інтэрнэт рэчаў" path="/pretest/internet-things" />
         <CardLink name="Інтэрнэт" path="/pretest/internet" />
       </section>
@@ -35,11 +24,6 @@ export default function Sections() {
         Электроніка
       </Text>
       <section className={st.cards}>
-        {/* <CardLink
-          name="Ўвесь раздзел: Электроніка"
-          path="/pretest/electronics-full"
-          isFull
-        /> */}
         <CardLink
           name="Асновы аналагавай і лічбавай электронікі"
           path="/pretest/electro-fundamentals"

@@ -13,9 +13,20 @@
 .level {
   animation: levelAppearAnim 0.7s linear;
   background: linear-gradient(to right, #1e3d58, #43b0f1);
+  padding: 6px;
   color: white;
-  padding: 20px 30px;
   width: 100%;
   margin: 10px 0px;
   border-radius: 0px 0px 50px 0px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  .levelText {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 0px 45px 0px;
+    padding: 12px 30px;
+    width: 90%;
+  }
 }

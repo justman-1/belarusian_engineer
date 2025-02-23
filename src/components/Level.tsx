@@ -5,6 +5,7 @@ import Link from "next/link"
 interface PropsType {
   level: number
   section: string
+  levelTestResult: number
 }
 
 export default function Level(props: PropsType) {
@@ -16,7 +17,13 @@ export default function Level(props: PropsType) {
       }}
     >
       <Box className={st.level}>
-        <Text>Узровень {props.level}</Text>
+        <Text className={st.levelText} fontSize="lg">
+          Узровень {props.level}
+        </Text>
+        <div style={{ marginRight: "25px", marginTop: "10px", opacity: "0.7" }}>
+          {props.levelTestResult}%
+        </div>
+        {/* <Text>Узровень {props.level}</Text> */}
       </Box>
     </Link>
   )

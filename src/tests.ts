@@ -8,8 +8,18 @@ export interface TestWord {
   word: string
   checked: boolean
 }
+interface TestWordResult extends TestWord {
+  answer: string
+}
 
 export type Test = TestWord[]
+export type ResultTest = TestWordResult[]
+export interface PassingTestResult {
+  section_name: string
+  level: number
+  isLastLevel: boolean
+  test: ResultTest
+}
 
 export interface Db {
   [key: string]: Test[]
@@ -39,20 +49,71 @@ const dbBaseObj: Db = {
 
 class TestsClass {
   initTests(): Db {
-    const db: Db = dbBaseObj
+    let db: Db = dbBaseObj
     let successDecrypt = false
     if (localStorage.getItem("technikDb")) {
-      const db: Db | null = this.#tryDecryptDb(localStorage.getItem("technikDb") || "")
+      const gettingDb: Db | null = this.#tryDecryptDb(
+        localStorage.getItem("technikDb") || ""
+      )
       successDecrypt = db ? true : false
+      if (gettingDb) db = gettingDb
     }
     if (!successDecrypt) {
-      //create new db
       const newDb = this.#createNewDb()
-      localStorage.setItem("technikDb", this.#encryptDb(newDb))
+      db = newDb
     }
     return this.#integrateUpdatesToDb(db)
   }
+  encryptTestResult(result: string): string {
+    return AES.encrypt(result, "RANDOMKEYSFDKJSDHBLSVDKLSG8s3HBHSGFGH34277e").toString()
+  }
+  tryDecryptTestResult(encryptedResult: string): string | null {
+    let decryptedBytes
+    try {
+      decryptedBytes = AES.decrypt(
+        encryptedResult,
+        "RANDOMKEYSFDKJSDHBLSVDKLSG8s3HBHSGFGH34277e"
+      )
+      return decryptedBytes.toString(enc.Utf8)
+    } catch {
+      return null
+    }
+  }
+  saveTestResult(section_name: string, level: number, test: Test) {
+    const db = this.initTests()
+    let qWas: number = 0
+    for (let i = 0; i < db[section_name][level - 1].length; ++i)
+      qWas += db[section_name][level - 1][i].checked ? 1 : 0
+    let qNew: number = 0
+    for (let i = 0; i < test.length; ++i) qNew += test[i].checked ? 1 : 0
+    if (qNew > qWas) db[section_name][level - 1] = test
+    this.#saveNewDb(db)
+  }
+  isLastLevel(section_name: string, level: number) {
+    const db = this.initTests()
+    return !(
+      level < db[section_name].length - 1 ||
+      (level == db[section_name].length - 1 &&
+        db[section_name][db[section_name].length - 1].length >= 4)
+    )
+  }
+  getTestLevelsMarks(section_name: string): number[] {
+    const db = this.initTests()
+    const marks: number[] = []
+    for (let i = 0; i < db[section_name].length; ++i) {
+      if (db[section_name][i].length >= 4) {
+        let correctAnswers: number = 0
+        for (let j = 0; j < db[section_name][i].length; ++j)
+          correctAnswers += db[section_name][i][j].checked ? 1 : 0
+        marks.push(Math.round((correctAnswers / db[section_name][i].length) * 100))
+      }
+    }
+    return marks
+  }
 
+  #saveNewDb(db: Db): void {
+    localStorage.setItem("technikDb", this.#encryptDb(db))
+  }
   #integrateUpdatesToDb(db: Db): Db {
     for (const sectorKey in sectors) {
       for (const themeKey in sectors[sectorKey]) {
@@ -132,12 +193,12 @@ class TestsClass {
     let decryptedBytes
     try {
       decryptedBytes = AES.decrypt(hashedDb, hashingString)
+      const decrypted: string = decryptedBytes.toString(enc.Utf8)
+      //console.log("decr string: " + decrypted)
+      return JSON.parse(decrypted)
     } catch {
       return null
     }
-    const decrypted: string = decryptedBytes.toString(enc.Utf8)
-    //console.log("decr string: " + decrypted)
-    return JSON.parse(decrypted)
   }
 }
 

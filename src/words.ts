@@ -28,7 +28,34 @@ type DataType = {
   "electronics-full": ElectronicsFullType
 }
 
+interface SectionNamesType {
+  [key: string]: string
+  "prog-web": string
+  "prog-mobile": string
+  "prog-micro": string
+  algo: string
+  ai: string
+  "internet-things": string
+  internet: string
+  "electro-fundamentals": string
+  "control-systems": string
+  schemes: string
+}
+
 //const Budze: Translation[] = []
+
+export const SectionNames: SectionNamesType = {
+  "prog-web": "Вэб-праграммаванне",
+  "prog-mobile": "Праграммаванне мабільных дадаткаў",
+  "prog-micro": "Праграммаванне мікракантролераў і ўбудавальных сістэм",
+  algo: "Алгарытмы і структуры даных",
+  ai: "Машыннае навучанне і штучны інтэлект",
+  "internet-things": "Інтэрнэт рэчаў",
+  internet: "Інтэрнэт",
+  "electro-fundamentals": "Асновы аналагавай і лічбавай электронікі",
+  "control-systems": "Сістэмы кіравання і аўтаматызацыя",
+  schemes: "Электрамантаж і схемы",
+}
 
 //Вэб-праграммаванне
 const progWeb: Translation[] = [
