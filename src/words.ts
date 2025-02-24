@@ -155,7 +155,7 @@ const progWeb: Translation[] = [
     options: ["семинар", "конференция", "лекция"],
   },
   {
-    word: "домен",
+    word: "дамен",
     translation: "домен",
     options: ["сервер", "субдомен", "хостинг"],
   },
