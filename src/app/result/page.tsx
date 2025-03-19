@@ -55,7 +55,9 @@ export default function Result() {
           <Confetti
             width={document.body.clientWidth}
             height={document.documentElement.scrollHeight}
-            numberOfPieces={confettiRunning ? 300 : 0}
+            numberOfPieces={confettiRunning ? 700 : 0}
+            initialVelocityY={100}
+            gravity={0.12}
           />
           <Text textStyle="4xl" textAlign="center" marginTop="4">
             Ваш вынік:
