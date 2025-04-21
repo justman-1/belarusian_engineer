@@ -116,10 +116,18 @@ class TestsClass {
   }
   #integrateUpdatesToDb(db: Db): Db {
     for (const sectorKey in sectors) {
+      let found: boolean = false;
       for (const themeKey in sectors[sectorKey]) {
         const words: Translation[] = sectors[sectorKey][themeKey]
-        if (words.length != db[themeKey].length) {
-          for (let i = 0; i < words.length; ++i) {
+        const testsWordsLength = db[themeKey].reduce((currSum, test)=>currSum + test.length, 0)
+        if (words.length != testsWordsLength) {
+          db = this.#createNewDb()
+          found = true
+          console.log(sectorKey, themeKey, "CREATE NEW DB")
+          console.log("tests: ", db)
+          console.log("words: ", sectors)
+          break;
+          /* for (let i = 0; i < words.length; ++i) {
             let found: boolean = false
             for (const test of db[themeKey]) {
               for (let j = 0; j < test.length; ++j) {
@@ -136,11 +144,13 @@ class TestsClass {
                 checked: false,
               })
             }
-          }
+          } */
         }
       }
+      if(found)
+        break;
     }
-    localStorage.setItem("technikDb", this.#encryptDb(db))
+    this.#saveNewDb(db)
     return db
   }
   #createNewDb(): Db {
