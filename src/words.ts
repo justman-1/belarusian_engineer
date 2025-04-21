@@ -57,7 +57,7 @@ export const SectionNames: SectionNamesType = {
   schemes: "Электрамантаж і схемы",
 }
 
-//Вэб-праграммаванне
+//Вэб-праграммаванне//
 const progWeb: Translation[] = [
   {
     word: "запыт",
