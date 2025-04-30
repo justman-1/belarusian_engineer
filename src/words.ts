@@ -45,9 +45,9 @@ interface SectionNamesType {
 //const Budze: Translation[] = []
 
 export const SectionNames: SectionNamesType = {
-  "prog-web": "Вэб-праграммаванне",
-  "prog-mobile": "Праграммаванне мабільных дадаткаў",
-  "prog-micro": "Праграммаванне мікракантролераў і ўбудавальных сістэм",
+  "prog-web": "Вэб-праграмаванне",
+  "prog-mobile": "Праграмаванне мабільных дадаткаў",
+  "prog-micro": "Праграмаванне мікракантролераў і ўбудавальных сістэм",
   algo: "Алгарытмы і структуры даных",
   ai: "Машыннае навучанне і штучны інтэлект",
   "internet-things": "Інтэрнэт рэчаў",
@@ -57,7 +57,7 @@ export const SectionNames: SectionNamesType = {
   schemes: "Электрамантаж і схемы",
 }
 
-//Вэб-праграммаванне//
+//Вэб-праграмаванне//
 const progWeb: Translation[] = [
   {
     word: "запыт",
@@ -211,7 +211,7 @@ const progWeb: Translation[] = [
   },
 ]
 
-//Праграммаванне мабільных дадаткаў
+//Праграмаванне мабільных дадаткаў
 const progMobile: Translation[] = [
   {
     word: "мабільны дадатак",
@@ -224,7 +224,7 @@ const progMobile: Translation[] = [
     options: ["внедрение", "конверсия", "интеграция"],
   },
   {
-    word: "усталяваць праграмму",
+    word: "усталяваць праграму",
     translation: "установить программу",
     options: ["удалить программу", "обновить драйвер", "запустить систему"],
   },
@@ -324,7 +324,7 @@ const progMobile: Translation[] = [
   },
 ]
 
-//Праграммаванне мікракантролераў і ўбудавальных сістэм
+//Праграмаванне мікракантролераў і ўбудавальных сістэм
 const progMicro: Translation[] = [
   {
     word: "лічбавы",
@@ -891,9 +891,9 @@ const schemes: Translation[] = [
 
 const data: DataType = {
   "prog-full": {
-    "prog-web": progWeb, //Вэб-праграммаванне
-    "prog-mobile": progMobile, //Праграммаванне мабільных дадаткаў
-    "prog-micro": progMicro, //Праграммаванне мікракантролераў і ўбудавальных сістэм
+    "prog-web": progWeb, //Вэб-праграмаванне
+    "prog-mobile": progMobile, //Праграмаванне мабільных дадаткаў
+    "prog-micro": progMicro, //Праграмаванне мікракантролераў і ўбудавальных сістэм
     algo: algo, //Алгарытмы і структуры даных
     ai: ai, //Машыннае навучанне і штучны інтэлект
     "internet-things": internetThings, //Інтэрнэт рэчаў
