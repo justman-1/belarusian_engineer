@@ -463,7 +463,7 @@ const algo: Translation[] = [
   }, */
   {
     word: "сцісканне",
-    translation: "сжатия",
+    translation: "сжатие",
     options: ["тискать", "удаление", "передача"],
   },
 ]
